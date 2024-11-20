@@ -38,3 +38,5 @@ tree:
 └───templates
     └───index.html
 ```
+
+### Note: Bisa juga download full programnya tanpa download model terpisah di full-program-link.txt
