@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Analysis From Hand Drawn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Mental Health Analysis</h1>
+            
+            <form method="post" enctype="multipart/form-data" class="space-y-6">
+                <div class="flex flex-col items-center p-6 border-2 border-dashed border-gray-300 rounded-lg">
+                    <div class="text-center">
+                        <img id="preview" class="hidden mx-auto max-h-64 mb-4">
+                        <label for="file" class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            Choose Image
+                        </label>
+                        <input type="file" id="file" name="file" accept="image/*" class="hidden" onchange="previewImage(event)">
+                        <p class="mt-2 text-sm text-gray-500">Upload handwriting image for analysis</p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
+                        Analyze
+                    </button>
+                </div>
+            </form>
+
+            {% if error %}
+            <div class="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            {% if result %}
+            <div class="mt-6 p-4 bg-blue-100 border border-blue-400 rounded">
+                <h2 class="font-bold text-lg mb-2">Analysis Result:</h2>
+                <p>Prediction: {{ result }}</p>
+                <p>Confidence: {{ confidence }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('preview');
+            preview.classList.remove('hidden');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
