@@ -5,7 +5,7 @@ Checkpoint & model di download terpisah karna gak bisa di push sizenya 100mb+
 Link downloadnya udah ada di link.txt di setiap folder checkpoint & model
 
 tree: 
-
+```
 ├───checkpoint
 │   └───link.txt
 ├───dataset
@@ -37,3 +37,4 @@ tree:
 │   └───mental_health_model.json
 └───templates
     └───index.html
+```
